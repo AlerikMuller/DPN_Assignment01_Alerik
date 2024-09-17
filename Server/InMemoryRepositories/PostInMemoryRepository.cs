@@ -6,6 +6,13 @@ namespace InMemoryRepositories;
 
 public class PostInMemoryRepository : IPostRepository
 {
+    private readonly List<Post> posts = new();
+
+    public PostInMemoryRepository()
+    {
+        
+    }
+    
     public Task<Post> AddAsync(Post post)
     {
         post.Id = posts.Any()
@@ -45,6 +52,13 @@ public class PostInMemoryRepository : IPostRepository
 
     public Task<Post> GetSingleAsync(int id)
     {
+        var post = posts.SingleOrDefault(p => p.Id == id);
+        if (post is null)
+        {
+            throw new InvalidOperationException(
+                $"Post with ID '{id}' not found");
+        }
+
         return Task.FromResult(post);
     }
 

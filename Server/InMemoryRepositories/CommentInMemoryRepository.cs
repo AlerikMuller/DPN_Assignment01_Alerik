@@ -5,6 +5,13 @@ namespace InMemoryRepositories;
 
 public class CommentInMemoryRepository : ICommentRepository
 {
+    private readonly List<Comment> comments = new();
+
+    public CommentInMemoryRepository()
+    {
+        
+    }
+
     public Task<Comment> AddAsync(Comment comment)
     {
         comment.Id = comments.Any()
@@ -44,7 +51,14 @@ public class CommentInMemoryRepository : ICommentRepository
 
     public Task<Comment> GetSingleAsync(int id)
     {
-        return Task.FromResult(comment);
+        var user = comments.SingleOrDefault(u => u.Id == id);
+        if (user is null)
+        {
+            throw new InvalidOperationException(
+                $"Comment with ID '{id}' not found");
+        }
+
+        return Task.FromResult(user);
     }
 
     public IQueryable<Comment> GetManyAsync()

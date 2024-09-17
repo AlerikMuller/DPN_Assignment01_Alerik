@@ -7,6 +7,12 @@ namespace InMemoryRepositories;
 
 public class UserInMemoryRepository : IUserRepository
 {
+    private readonly List<User> users = new();
+
+    public UserInMemoryRepository()
+    {
+        
+    }
     public Task<User> AddAsync(User user)
     {
         user.Id = users.Any()
@@ -46,6 +52,13 @@ public class UserInMemoryRepository : IUserRepository
 
     public Task<User> GetSingleAsync(int id)
     {
+        var user = users.SingleOrDefault(u => u.Id == id);
+        if (user is null)
+        {
+            throw new InvalidOperationException(
+                $"User with ID '{id}' not found");
+        }
+
         return Task.FromResult(user);
     }
 
