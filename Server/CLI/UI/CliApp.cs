@@ -6,6 +6,6 @@ public class CliApp(IUserRepository userRepository, ICommentRepository commentRe
 {
     public async Task StartAsync()
     {
-        throw new NotImplementedException();
+        throw new InvalidOperationException();
     }
 }
