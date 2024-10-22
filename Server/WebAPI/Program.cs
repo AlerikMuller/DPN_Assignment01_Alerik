@@ -1,5 +1,6 @@
 using FileRepositories;
 using RepositoryContracts;
+using WebAPI.GlobalExceptionHandler;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -141,7 +141,14 @@
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\Alerik Muller\\RiderProjects\\DPN_Assignment_Alerik\\Server\\Entities\\Entities.csproj": {
+                "projectPath": "C:\\Users\\Alerik Muller\\RiderProjects\\DPN_Assignment_Alerik\\Server\\Entities\\Entities.csproj"
+              },
+              "C:\\Users\\Alerik Muller\\RiderProjects\\DPN_Assignment_Alerik\\Server\\RepositoryContracts\\RepositoryContracts.csproj": {
+                "projectPath": "C:\\Users\\Alerik Muller\\RiderProjects\\DPN_Assignment_Alerik\\Server\\RepositoryContracts\\RepositoryContracts.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -199,7 +206,11 @@
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\Alerik Muller\\RiderProjects\\DPN_Assignment_Alerik\\Server\\Entities\\Entities.csproj": {
+                "projectPath": "C:\\Users\\Alerik Muller\\RiderProjects\\DPN_Assignment_Alerik\\Server\\Entities\\Entities.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
