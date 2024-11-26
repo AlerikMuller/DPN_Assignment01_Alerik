@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "vAJ8BaCw/4Q=",
+  "dgSpecHash": "5AJkEpy4ypU=",
   "success": true,
   "projectFilePath": "C:\\Users\\Alerik Muller\\RiderProjects\\DPN_Assignment_Alerik\\ApiContracts\\ApiContracts.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Alerik Muller\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.11\\microsoft.netcore.app.ref.8.0.11.nupkg.sha512",
+    "C:\\Users\\Alerik Muller\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.11\\microsoft.windowsdesktop.app.ref.8.0.11.nupkg.sha512",
+    "C:\\Users\\Alerik Muller\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.11\\microsoft.aspnetcore.app.ref.8.0.11.nupkg.sha512"
+  ],
   "logs": []
 }

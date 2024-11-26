@@ -5,7 +5,11 @@ public class Post
     public int Id { get; set; }
     public string Title { get; set; }
     public string Body { get; set; }
-    public int UserId { get; }
+
+    // Navigation properties
+    public int UserId { get; set; }
+    public User User { get; set; } = null!;
+    public ICollection<Comment> Comments { get; set; } = new List<Comment>();
 
     public Post(string title, string body, int userId)
     {

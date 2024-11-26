@@ -27,7 +27,6 @@ internal class SinglePostView
         Console.WriteLine($"Content: {post.Body}");
         Console.WriteLine($"-----------------------------------------------------");
         
-        // use comment repository to load all comments for this post. The Where() method is used to filter the comments by the post id.
         List<Comment> comments = commentRepository.GetMany().Where(c => c.PostId == postId).ToList();
 
         foreach (Comment comment in comments)

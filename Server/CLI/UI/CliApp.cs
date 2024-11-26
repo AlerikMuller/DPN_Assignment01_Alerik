@@ -24,7 +24,6 @@ public class CliApp
         Console.WriteLine("Exiting app...");
     }
 
-    // This is responsible for printing out the main menu and handling the user's choice.
     private async Task StartMainMenu()
     {
         while (true)
@@ -33,11 +32,9 @@ public class CliApp
 
             string? selectedOption = Console.ReadLine();
 
-            // read the selected option, and either instantiate the view and show it, or use "<" to exit (return, which exists to the main method, and terminates the program).
             switch (selectedOption)
             {
                 case "1":
-                    // instantiate the view for manage posts, and show it.
                     ManagePostsView managePostsView = new (postRepository, commentRepository, userRepository);
                     await managePostsView.ShowAsync();
                     break;
@@ -47,7 +44,6 @@ public class CliApp
                     break;
                 case "<": return;
                 default:
-                    // in case the input was not matched, try again.
                     Console.WriteLine("Invalid option, please try again.\n\n");
                     break;
             }
@@ -56,7 +52,6 @@ public class CliApp
 
     private static void PrintMainMenu()
     {
-        // The three double quotes are used to write a multiline string in C#, which keeps the formatting.
         const string menuOptions = """
                                    Please select:
                                    1) Manage posts

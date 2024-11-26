@@ -15,10 +15,9 @@ public class CreatePostView
     public Task ShowAsync()
     {
         Console.WriteLine();
-        return CreatePostAsync(); // this method returns a Task. I don't need to await the task here, so I just pass it on to the caller to await it instead.
+        return CreatePostAsync();
     }
 
-    // I don't need to await anything in this method, so it's not async. But it does return a Task, which can be awaited elsewhere, when needed.
     private Task CreatePostAsync()
     {
         while (true)
@@ -27,8 +26,6 @@ public class CreatePostView
             Console.WriteLine("Please insert post title:");
             string? title = null;
             
-            // keep asking for input, until it's not empty.
-            // if < is entered, cancel the post creation.
             while (string.IsNullOrEmpty(title))
             {
                 title = Console.ReadLine();
@@ -42,7 +39,6 @@ public class CreatePostView
                 {
                     Console.WriteLine("Post creation cancelled.");
                     
-                    // return a completed task, to indicate that the post creation was cancelled. Normally I would just "return;", but this is a Task-returning method, so I need to return a Task.
                     return Task.CompletedTask; 
                 }
             }
@@ -50,7 +46,6 @@ public class CreatePostView
             Console.WriteLine("Please insert post content:");
             string? content = null;
             
-            // again, keep asking for input, until it's not empty. And check for exit.
             while (string.IsNullOrEmpty(content))
             {
                 content = Console.ReadLine();
@@ -71,7 +66,6 @@ public class CreatePostView
 
             int userId;
 
-            // You should recognize this pattern by now.
             while (true)
             {
                 string? input = Console.ReadLine();
@@ -89,7 +83,6 @@ public class CreatePostView
 
                 if (int.TryParse(input, out userId))
                 {
-                    // TODO check if user exists
                     break;
                 }
                 else
@@ -97,8 +90,6 @@ public class CreatePostView
                     Console.WriteLine("Could not parse the ID, please try again.");
                 }
             }
-
-            // Then print out the information, and ask for confirmation.
             
             Console.WriteLine("You are about to create a post.");
             Console.WriteLine("Do you want to proceed? (y/n)");
@@ -137,7 +128,6 @@ public class CreatePostView
         }
     }
 
-    // add post to the repository.
     private async Task AddPostAsync(string title, string content, int userId)
     {
         Post post = new(title, content, userId);

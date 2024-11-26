@@ -9,9 +9,6 @@ public class CommentInMemoryRepository : ICommentRepository
 
     public CommentInMemoryRepository()
     {
-        // I add a bunch of dummy data.
-        // The underscore is a discard, which means I don't care about the result. AddAsync returns the added comment, but I don't need it here.
-        // I call .Result on the Task, because I can't make the constructor async.
         _ = AddAsync(new Comment("Cats are great!", 1, 1)).Result;
         _ = AddAsync(new Comment("So true!", 1, 2)).Result;
         _ = AddAsync(new Comment("They're just so fluffy", 1, 2)).Result;
@@ -46,9 +43,6 @@ public class CommentInMemoryRepository : ICommentRepository
 
     public Task<Comment> AddAsync(Comment comment)
     {
-        // This is a "ternary expression", essentially and if-then-else in one line.
-        // if there are any comments already, find the highest ID and add 1 to it.
-        // Other wise the ID is 1.
         
         comment.Id = comments.Any()
             ? comments.Max(c => c.Id) + 1
@@ -56,9 +50,6 @@ public class CommentInMemoryRepository : ICommentRepository
         comments.Add(comment);
         return Task.FromResult(comment); 
         
-        // I wrap the comment in a Task, because the method signature requires it.
-        // In this repository we are not doing any async work, this comes later in a different repository.
-        // But they share the same interface, so we have to keep the method signature the same.
     }
 
     public Task UpdateAsync(Comment comment)
@@ -69,12 +60,10 @@ public class CommentInMemoryRepository : ICommentRepository
             throw new NotFoundException($"Comment with ID '{comment.Id}' not found");
         }
 
-        // simplest way to update the comment is to remove the existing one and add the new one.
         comments.Remove(existingComment);
         comments.Add(comment);
 
         return Task.CompletedTask;
-        // Nothing to actually return, so we just return a completed task.
     }
 
     public Task DeleteAsync(int id)
